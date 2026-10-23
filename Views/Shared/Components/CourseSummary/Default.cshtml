@@ -1,23 +1,23 @@
 @model List<string>
 
-<div class="card shadow-sm border-success mb-3">
-    <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
-        <strong>⚙️ Demo ViewComponent</strong>
-        <span class="badge bg-light text-dark">Server Time: @ViewBag.ServerTime</span>
+<div class="card shadow-sm border mb-3">
+    <div class="card-header bg-light text-dark d-flex justify-content-between align-items-center fw-semibold">
+        <span>⚙️ ViewComponent</span>
+        <span class="badge bg-secondary-subtle text-secondary border small">@ViewBag.ServerTime</span>
     </div>
     <div class="card-body">
-        <h5 class="card-title text-success">@ViewBag.ComponentTitle</h5>
-        <p class="card-text">
-            ViewComponent có <strong>class C# riêng</strong> tự xử lý dữ liệu (không phụ thuộc vào Controller của trang gọi nó):
+        <h6 class="card-title text-dark fw-bold mb-2">@ViewBag.ComponentTitle</h6>
+        <p class="card-text text-secondary small mb-2">
+            Class C# tự xử lý logic và dữ liệu độc lập:
         </p>
-        <ul class="list-group list-group-flush mb-3">
+        <ul class="list-group list-group-flush mb-3 small">
             @foreach (var course in Model)
             {
-                <li class="list-group-item d-flex align-items-center">
-                    <span class="badge bg-primary rounded-pill me-2">✓</span> @course
+                <li class="list-group-item px-0 py-1 text-secondary">
+                    • @course
                 </li>
             }
         </ul>
-        <span class="badge bg-secondary">Cơ chế: Gọi qua &commat;await Component.InvokeAsync("CourseSummary")</span>
+        <span class="badge bg-light text-secondary border">Cơ chế: Tự xử lý logic độc lập trong C#</span>
     </div>
 </div>

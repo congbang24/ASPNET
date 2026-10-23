@@ -2,22 +2,23 @@
     ViewData["Title"] = "Demo 1: Partial View & ViewComponent";
 }
 
-<div class="mb-4 text-center">
-    <h2 class="text-primary fw-bold">YÊU CẦU 1: DEMO PARTIAL VIEW & VIEWCOMPONENT</h2>
-    <p class="text-muted">So sánh thực tế giữa Partial View (View con) và ViewComponent (Thành phần giao diện độc lập)</p>
+<div class="mb-4">
+    <h3 class="text-dark fw-bold mb-1">Yêu cầu 1: Partial View & ViewComponent</h3>
+    <p class="text-muted small">So sánh cơ chế tái sử dụng giao diện trong ASP.NET Core MVC</p>
+    <hr class="text-secondary opacity-25" />
 </div>
 
-<div class="row">
+<div class="row g-4">
     <!-- CỘT 1: DEMO PARTIAL VIEW -->
-    <div class="col-md-6 mb-4">
-        <div class="border rounded p-3 bg-light h-100">
-            <h4 class="text-info fw-bold mb-3">1. Partial View (_StudentInfoPartial)</h4>
-            <p>
-                <strong>Khái niệm:</strong> Là một đoạn HTML/Razor con. View cha phải chuẩn bị sẵn dữ liệu Model rồi truyền vào:
+    <div class="col-md-6">
+        <div class="border rounded p-3 bg-white h-100 shadow-sm">
+            <h5 class="text-dark fw-semibold mb-2">1. Partial View (_StudentInfoPartial)</h5>
+            <p class="text-secondary small mb-3">
+                Là file Razor con nhận dữ liệu thụ động từ View cha truyền vào:
             </p>
 
-            <div class="p-2 bg-dark text-light rounded mb-3">
-                <code>&lt;partial name="_StudentInfoPartial" model='...' /&gt;</code>
+            <div class="p-2 bg-light border rounded mb-3">
+                <code class="text-dark small">&lt;partial name="_StudentInfoPartial" model='...' /&gt;</code>
             </div>
 
             <!-- GỌI PARTIAL VIEW -->
@@ -26,27 +27,29 @@
     </div>
 
     <!-- CỘT 2: DEMO VIEWCOMPONENT -->
-    <div class="col-md-6 mb-4">
-        <div class="border rounded p-3 bg-light h-100">
-            <h4 class="text-success fw-bold mb-3">2. ViewComponent (CourseSummary)</h4>
-            <p>
-                <strong>Khái niệm:</strong> Là thành phần nâng cao có class C# riêng (<code>CourseSummaryViewComponent</code>). Nó tự xử lý dữ liệu mà không cần Controller cha truyền vào:
+    <div class="col-md-6">
+        <div class="border rounded p-3 bg-white h-100 shadow-sm">
+            <h5 class="text-dark fw-semibold mb-2">2. ViewComponent (CourseSummary)</h5>
+            <p class="text-secondary small mb-3">
+                Có class C# riêng (<code>CourseSummaryViewComponent</code>) tự xử lý dữ liệu độc lập:
             </p>
 
-            <div class="p-2 bg-dark text-light rounded mb-3">
-                <code>&commat;await Component.InvokeAsync("CourseSummary")</code>
+            <div class="p-2 bg-light border rounded mb-3">
+                <code class="text-dark small">&commat;await Component.InvokeAsync("CourseSummary")</code>
             </div>
 
             <!-- GỌI VIEWCOMPONENT -->
-            @await Component.InvokeAsync("CourseSummary", new { title = "Các học phần trong chương trình đào tạo" })
+            @await Component.InvokeAsync("CourseSummary", new { title = "Các học phần đào tạo" })
         </div>
     </div>
 </div>
 
-<div class="alert alert-secondary mt-3">
-    <h5>📌 Bảng tóm tắt để trả lời cô giáo:</h5>
-    <ul>
-        <li><strong>Partial View:</strong> Thụ động, dùng để tái sử dụng HTML đơn giản, dữ liệu do View cha truyền vào.</li>
-        <li><strong>ViewComponent:</strong> Chủ động, có logic C# riêng (hỗ trợ async, DI, kết nối DB), không phụ thuộc vào View cha.</li>
-    </ul>
+<div class="card bg-light border mt-4">
+    <div class="card-body py-3">
+        <h6 class="fw-bold text-dark mb-2">📌 Tóm tắt lý thuyết:</h6>
+        <ul class="mb-0 text-secondary small">
+            <li><strong>Partial View:</strong> Thụ động, dùng để tái sử dụng HTML đơn giản, dữ liệu do View cha truyền vào.</li>
+            <li><strong>ViewComponent:</strong> Chủ động, có logic C# riêng (hỗ trợ async, DI, kết nối DB), không phụ thuộc vào View cha.</li>
+        </ul>
+    </div>
 </div>

@@ -1,13 +1,13 @@
 @model (string FullName, string Role, string Note)
 
-<div class="card shadow-sm border-info mb-3">
-    <div class="card-header bg-info text-white">
-        <strong>🧩 Demo Partial View</strong>
+<div class="card shadow-sm border mb-3">
+    <div class="card-header bg-light text-dark fw-semibold">
+        🧩 Partial View
     </div>
     <div class="card-body">
-        <h5 class="card-title text-primary">Họ và tên: @Model.FullName</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Vai trò: @Model.Role</h6>
-        <p class="card-text">@Model.Note</p>
-        <span class="badge bg-secondary">Cơ chế: Dữ liệu này được truyền trực tiếp từ View cha vào Partial View.</span>
+        <h6 class="card-title text-dark fw-bold mb-1">@Model.FullName</h6>
+        <div class="text-muted small mb-2">@Model.Role</div>
+        <p class="card-text text-secondary mb-2">@Model.Note</p>
+        <span class="badge bg-light text-secondary border">Cơ chế: Dữ liệu truyền từ View cha</span>
     </div>
 </div>

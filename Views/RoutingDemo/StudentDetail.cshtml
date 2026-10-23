@@ -2,23 +2,23 @@
     ViewData["Title"] = "Chi tiết sinh viên - Attribute Routing";
 }
 
-<div class="card shadow-sm border-success mt-4">
-    <div class="card-header bg-success text-white">
-        <h4>🎯 Kết quả nhận được từ Attribute Routing</h4>
+<div class="card shadow-sm border mt-4">
+    <div class="card-header bg-light text-dark fw-semibold">
+        Chi tiết kết quả từ Attribute Routing
     </div>
     <div class="card-body">
-        <p class="lead">Action này được kích hoạt thông qua template định tuyến: <code>[HttpGet("sinh-vien/{id:int}/{ten}")]</code></p>
-        <hr />
-        <dl class="row">
-            <dt class="col-sm-3">URL đang chạy:</dt>
-            <dd class="col-sm-9"><span class="badge bg-dark fs-6">@ViewBag.CurrentUrl</span></dd>
+        <p class="text-secondary small">Định tuyến bằng template: <code>[HttpGet("sinh-vien/{id:int}/{ten}")]</code></p>
+        <hr class="text-secondary opacity-25" />
+        <dl class="row small mb-3">
+            <dt class="col-sm-3 text-secondary">URL hiện tại:</dt>
+            <dd class="col-sm-9"><code class="text-dark">@ViewBag.CurrentUrl</code></dd>
 
-            <dt class="col-sm-3">Mã số (ID):</dt>
-            <dd class="col-sm-9"><span class="badge bg-primary fs-6">@ViewBag.Id</span></dd>
+            <dt class="col-sm-3 text-secondary">Mã số (ID):</dt>
+            <dd class="col-sm-9"><span class="badge bg-light text-dark border">@ViewBag.Id</span></dd>
 
-            <dt class="col-sm-3">Tên sinh viên:</dt>
-            <dd class="col-sm-9"><span class="badge bg-info text-dark fs-6">@ViewBag.StudentName</span></dd>
+            <dt class="col-sm-3 text-secondary">Tên sinh viên:</dt>
+            <dd class="col-sm-9"><span class="badge bg-light text-dark border">@ViewBag.StudentName</span></dd>
         </dl>
-        <a href="/dieu-huong-attribute" class="btn btn-outline-secondary mt-3">← Quay lại trang so sánh Routing</a>
+        <a href="/dieu-huong-attribute" class="btn btn-sm btn-outline-secondary">← Quay lại trang so sánh Routing</a>
     </div>
 </div>

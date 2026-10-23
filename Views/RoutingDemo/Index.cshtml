@@ -2,82 +2,83 @@
     ViewData["Title"] = "Demo 2: Routing trong ASP.NET Core";
 }
 
-<div class="mb-4 text-center">
-    <h2 class="text-primary fw-bold">YÊU CẦU 2: CONVENTIONAL ROUTING & ATTRIBUTE ROUTING</h2>
-    <p class="text-muted">So sánh hai phương thức định tuyến đường dẫn URL trong ASP.NET Core MVC</p>
+<div class="mb-4">
+    <h3 class="text-dark fw-bold mb-1">Yêu cầu 2: Conventional Routing & Attribute Routing</h3>
+    <p class="text-muted small">So sánh hai phương thức định tuyến URL trong ASP.NET Core MVC</p>
+    <hr class="text-secondary opacity-25" />
 </div>
 
-<div class="row">
+<div class="row g-4">
     <!-- CỘT 1: CONVENTIONAL ROUTING -->
-    <div class="col-md-6 mb-4">
-        <div class="card h-100 shadow-sm border-warning">
-            <div class="card-header bg-warning text-dark">
-                <strong>1. Conventional Routing (Theo quy ước)</strong>
+    <div class="col-md-6">
+        <div class="card h-100 shadow-sm border">
+            <div class="card-header bg-light text-dark fw-semibold">
+                1. Conventional Routing (Theo quy ước)
             </div>
             <div class="card-body">
-                <p>
-                    Quy tắc được khai báo <strong>tập trung trong <code>Program.cs</code></strong> theo mẫu:
+                <p class="text-secondary small mb-2">
+                    Khai báo tập trung một nơi trong file <code>Program.cs</code>:
                 </p>
-                <pre class="bg-dark text-light p-2 rounded"><code>app.MapControllerRoute(
+                <pre class="bg-light border text-dark p-2 rounded small mb-3"><code>app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");</code></pre>
                 
-                <h6 class="fw-bold mt-3">Các đường dẫn thực tế đang chạy:</h6>
-                <ul>
-                    <li>
-                        <a href="/Home/Index" target="_blank" class="fw-bold">/Home/Index</a> (Gọi HomeController -> Index)
+                <h6 class="fw-bold text-dark small mt-3">Các URL chạy theo quy ước:</h6>
+                <ul class="text-secondary small mb-3">
+                    <li class="mb-1">
+                        <a href="/Home/Index" target="_blank" class="text-decoration-none text-dark fw-semibold">/Home/Index</a> (HomeController -> Index)
                     </li>
-                    <li>
-                        <a href="/Hello/Index" target="_blank" class="fw-bold">/Hello/Index</a> (Gọi HelloController -> Index)
+                    <li class="mb-1">
+                        <a href="/Hello/Index" target="_blank" class="text-decoration-none text-dark fw-semibold">/Hello/Index</a> (HelloController -> Index)
                     </li>
-                    <li>
-                        <a href="/Hello/Welcome?name=NguyenCongBang&numTimes=3" target="_blank" class="fw-bold">
+                    <li class="mb-1">
+                        <a href="/Hello/Welcome?name=NguyenCongBang&numTimes=3" target="_blank" class="text-decoration-none text-dark fw-semibold">
                             /Hello/Welcome?name=NguyenCongBang&numTimes=3
                         </a>
                     </li>
                 </ul>
-                <div class="alert alert-warning py-2 mb-0">
-                    <small>Đường dẫn luôn phải tuân theo cấu trúc <code>/[Controller]/[Action]</code>.</small>
+                <div class="border rounded p-2 bg-light text-muted small">
+                    Định tuyến tự động theo cấu trúc mặc định <code>/[Controller]/[Action]</code>.
                 </div>
             </div>
         </div>
     </div>
 
     <!-- CỘT 2: ATTRIBUTE ROUTING -->
-    <div class="col-md-6 mb-4">
-        <div class="card h-100 shadow-sm border-primary">
-            <div class="card-header bg-primary text-white">
-                <strong>2. Attribute Routing (Bằng thuộc tính [Route])</strong>
+    <div class="col-md-6">
+        <div class="card h-100 shadow-sm border">
+            <div class="card-header bg-light text-dark fw-semibold">
+                2. Attribute Routing (Bằng thuộc tính [Route])
             </div>
             <div class="card-body">
-                <p>
-                    Quy tắc được khai báo <strong>ngay trên Controller và Action</strong> bằng thuộc tính <code>[Route]</code>:
+                <p class="text-secondary small mb-2">
+                    Khai báo trực tiếp trên Controller và Action bằng <code>[Route]</code>:
                 </p>
-                <pre class="bg-dark text-light p-2 rounded"><code>[Route("dieu-huong-attribute")]
+                <pre class="bg-light border text-dark p-2 rounded small mb-3"><code>[Route("dieu-huong-attribute")]
 public class RoutingDemoController : Controller
 {
     [HttpGet("sinh-vien/{id:int}/{ten}")]
     public IActionResult StudentDetail(int id, string ten)
 }</code></pre>
 
-                <h6 class="fw-bold mt-3">Thử nghiệm các URL tùy biến chuẩn SEO:</h6>
-                <ul>
-                    <li>
-                        <a href="/dieu-huong-attribute" class="fw-bold">/dieu-huong-attribute</a> (Trang hiện tại)
+                <h6 class="fw-bold text-dark small mt-3">Các URL tùy biến:</h6>
+                <ul class="text-secondary small mb-3">
+                    <li class="mb-1">
+                        <a href="/dieu-huong-attribute" class="text-decoration-none text-dark fw-semibold">/dieu-huong-attribute</a> (Trang hiện tại)
                     </li>
-                    <li>
-                        <a href="/dieu-huong-attribute/sinh-vien/2026/Nguyen-Cong-Bang" target="_blank" class="fw-bold text-success">
+                    <li class="mb-1">
+                        <a href="/dieu-huong-attribute/sinh-vien/2026/Nguyen-Cong-Bang" target="_blank" class="text-decoration-none text-dark fw-semibold">
                             /dieu-huong-attribute/sinh-vien/2026/Nguyen-Cong-Bang
                         </a>
                     </li>
-                    <li>
-                        <a href="/dieu-huong-attribute/sinh-vien/100/Lap-Trinh-Web" target="_blank" class="fw-bold text-success">
+                    <li class="mb-1">
+                        <a href="/dieu-huong-attribute/sinh-vien/100/Lap-Trinh-Web" target="_blank" class="text-decoration-none text-dark fw-semibold">
                             /dieu-huong-attribute/sinh-vien/100/Lap-Trinh-Web
                         </a>
                     </li>
                 </ul>
-                <div class="alert alert-info py-2 mb-0">
-                    <small>Tùy biến URL tự do, hỗ trợ ràng buộc kiểu dữ liệu như <code>{id:int}</code>, rất thích hợp làm Web API hoặc URL tiếng Việt chuẩn SEO.</small>
+                <div class="border rounded p-2 bg-light text-muted small">
+                    Tùy biến URL tự do, hỗ trợ ràng buộc kiểu như <code>{id:int}</code>, chuẩn SEO.
                 </div>
             </div>
         </div>

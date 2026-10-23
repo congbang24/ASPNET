@@ -46,4 +46,21 @@
 
 ## 📸 Hình ảnh giao diện chạy thực tế
 
-*(Dán ảnh chụp màn hình giao diện kết quả vào đây)*
+<img src="./picture/image.png" width="850" alt="Giao diện chạy 1" />
+
+<br/><br/>
+
+<img src="./picture/image copy.png" width="850" alt="Giao diện chạy 2" />
+
+<br/><br/>
+
+<img src="./picture/image copy 2.png" width="850" alt="Giao diện chạy 3" />
+
+<br/><br/>
+
+<img src="./picture/image copy 3.png" width="850" alt="Giao diện chạy 4" />
+
+<br/><br/>
+
+<img src="./picture/image copy 4.png" width="850" alt="Giao diện chạy 5" />
+
