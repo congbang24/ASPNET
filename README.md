@@ -64,3 +64,7 @@
 
 <img src="./picture/image copy 4.png" width="850" alt="Giao diện chạy 5" />
 
+<br/><br/>
+
+<img src="./picture/image copy 5.png" width="850" alt="Giao diện chạy 6" />
+
