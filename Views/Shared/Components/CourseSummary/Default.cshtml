@@ -1,0 +1,23 @@
+@model List<string>
+
+<div class="card shadow-sm border-success mb-3">
+    <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+        <strong>⚙️ Demo ViewComponent</strong>
+        <span class="badge bg-light text-dark">Server Time: @ViewBag.ServerTime</span>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title text-success">@ViewBag.ComponentTitle</h5>
+        <p class="card-text">
+            ViewComponent có <strong>class C# riêng</strong> tự xử lý dữ liệu (không phụ thuộc vào Controller của trang gọi nó):
+        </p>
+        <ul class="list-group list-group-flush mb-3">
+            @foreach (var course in Model)
+            {
+                <li class="list-group-item d-flex align-items-center">
+                    <span class="badge bg-primary rounded-pill me-2">✓</span> @course
+                </li>
+            }
+        </ul>
+        <span class="badge bg-secondary">Cơ chế: Gọi qua &commat;await Component.InvokeAsync("CourseSummary")</span>
+    </div>
+</div>

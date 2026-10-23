@@ -1,0 +1,85 @@
+@{
+    ViewData["Title"] = "Demo 2: Routing trong ASP.NET Core";
+}
+
+<div class="mb-4 text-center">
+    <h2 class="text-primary fw-bold">YÊU CẦU 2: CONVENTIONAL ROUTING & ATTRIBUTE ROUTING</h2>
+    <p class="text-muted">So sánh hai phương thức định tuyến đường dẫn URL trong ASP.NET Core MVC</p>
+</div>
+
+<div class="row">
+    <!-- CỘT 1: CONVENTIONAL ROUTING -->
+    <div class="col-md-6 mb-4">
+        <div class="card h-100 shadow-sm border-warning">
+            <div class="card-header bg-warning text-dark">
+                <strong>1. Conventional Routing (Theo quy ước)</strong>
+            </div>
+            <div class="card-body">
+                <p>
+                    Quy tắc được khai báo <strong>tập trung trong <code>Program.cs</code></strong> theo mẫu:
+                </p>
+                <pre class="bg-dark text-light p-2 rounded"><code>app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}/{id?}");</code></pre>
+                
+                <h6 class="fw-bold mt-3">Các đường dẫn thực tế đang chạy:</h6>
+                <ul>
+                    <li>
+                        <a href="/Home/Index" target="_blank" class="fw-bold">/Home/Index</a> (Gọi HomeController -> Index)
+                    </li>
+                    <li>
+                        <a href="/Hello/Index" target="_blank" class="fw-bold">/Hello/Index</a> (Gọi HelloController -> Index)
+                    </li>
+                    <li>
+                        <a href="/Hello/Welcome?name=NguyenCongBang&numTimes=3" target="_blank" class="fw-bold">
+                            /Hello/Welcome?name=NguyenCongBang&numTimes=3
+                        </a>
+                    </li>
+                </ul>
+                <div class="alert alert-warning py-2 mb-0">
+                    <small>Đường dẫn luôn phải tuân theo cấu trúc <code>/[Controller]/[Action]</code>.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CỘT 2: ATTRIBUTE ROUTING -->
+    <div class="col-md-6 mb-4">
+        <div class="card h-100 shadow-sm border-primary">
+            <div class="card-header bg-primary text-white">
+                <strong>2. Attribute Routing (Bằng thuộc tính [Route])</strong>
+            </div>
+            <div class="card-body">
+                <p>
+                    Quy tắc được khai báo <strong>ngay trên Controller và Action</strong> bằng thuộc tính <code>[Route]</code>:
+                </p>
+                <pre class="bg-dark text-light p-2 rounded"><code>[Route("dieu-huong-attribute")]
+public class RoutingDemoController : Controller
+{
+    [HttpGet("sinh-vien/{id:int}/{ten}")]
+    public IActionResult StudentDetail(int id, string ten)
+}</code></pre>
+
+                <h6 class="fw-bold mt-3">Thử nghiệm các URL tùy biến chuẩn SEO:</h6>
+                <ul>
+                    <li>
+                        <a href="/dieu-huong-attribute" class="fw-bold">/dieu-huong-attribute</a> (Trang hiện tại)
+                    </li>
+                    <li>
+                        <a href="/dieu-huong-attribute/sinh-vien/2026/Nguyen-Cong-Bang" target="_blank" class="fw-bold text-success">
+                            /dieu-huong-attribute/sinh-vien/2026/Nguyen-Cong-Bang
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/dieu-huong-attribute/sinh-vien/100/Lap-Trinh-Web" target="_blank" class="fw-bold text-success">
+                            /dieu-huong-attribute/sinh-vien/100/Lap-Trinh-Web
+                        </a>
+                    </li>
+                </ul>
+                <div class="alert alert-info py-2 mb-0">
+                    <small>Tùy biến URL tự do, hỗ trợ ràng buộc kiểu dữ liệu như <code>{id:int}</code>, rất thích hợp làm Web API hoặc URL tiếng Việt chuẩn SEO.</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

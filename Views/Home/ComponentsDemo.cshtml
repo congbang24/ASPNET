@@ -1,0 +1,52 @@
+@{
+    ViewData["Title"] = "Demo 1: Partial View & ViewComponent";
+}
+
+<div class="mb-4 text-center">
+    <h2 class="text-primary fw-bold">YÊU CẦU 1: DEMO PARTIAL VIEW & VIEWCOMPONENT</h2>
+    <p class="text-muted">So sánh thực tế giữa Partial View (View con) và ViewComponent (Thành phần giao diện độc lập)</p>
+</div>
+
+<div class="row">
+    <!-- CỘT 1: DEMO PARTIAL VIEW -->
+    <div class="col-md-6 mb-4">
+        <div class="border rounded p-3 bg-light h-100">
+            <h4 class="text-info fw-bold mb-3">1. Partial View (_StudentInfoPartial)</h4>
+            <p>
+                <strong>Khái niệm:</strong> Là một đoạn HTML/Razor con. View cha phải chuẩn bị sẵn dữ liệu Model rồi truyền vào:
+            </p>
+
+            <div class="p-2 bg-dark text-light rounded mb-3">
+                <code>&lt;partial name="_StudentInfoPartial" model='...' /&gt;</code>
+            </div>
+
+            <!-- GỌI PARTIAL VIEW -->
+            <partial name="_StudentInfoPartial" model='("Nguyễn Công Bằng", "Sinh viên", "Thực hành buổi 2: ASP.NET Core MVC Components")' />
+        </div>
+    </div>
+
+    <!-- CỘT 2: DEMO VIEWCOMPONENT -->
+    <div class="col-md-6 mb-4">
+        <div class="border rounded p-3 bg-light h-100">
+            <h4 class="text-success fw-bold mb-3">2. ViewComponent (CourseSummary)</h4>
+            <p>
+                <strong>Khái niệm:</strong> Là thành phần nâng cao có class C# riêng (<code>CourseSummaryViewComponent</code>). Nó tự xử lý dữ liệu mà không cần Controller cha truyền vào:
+            </p>
+
+            <div class="p-2 bg-dark text-light rounded mb-3">
+                <code>&commat;await Component.InvokeAsync("CourseSummary")</code>
+            </div>
+
+            <!-- GỌI VIEWCOMPONENT -->
+            @await Component.InvokeAsync("CourseSummary", new { title = "Các học phần trong chương trình đào tạo" })
+        </div>
+    </div>
+</div>
+
+<div class="alert alert-secondary mt-3">
+    <h5>📌 Bảng tóm tắt để trả lời cô giáo:</h5>
+    <ul>
+        <li><strong>Partial View:</strong> Thụ động, dùng để tái sử dụng HTML đơn giản, dữ liệu do View cha truyền vào.</li>
+        <li><strong>ViewComponent:</strong> Chủ động, có logic C# riêng (hỗ trợ async, DI, kết nối DB), không phụ thuộc vào View cha.</li>
+    </ul>
+</div>
