@@ -1,0 +1,110 @@
+@model Day3_NguyenCongBang.Models.PaginatedList<Day3_NguyenCongBang.Models.ProductViewModel>
+
+@{
+    ViewData["Title"] = "Danh sách sản phẩm";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1>Danh sách sản phẩm</h1>
+    <a asp-action="Create" class="btn btn-primary">
+        + Thêm mới sản phẩm
+    </a>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover align-middle">
+        <thead class="table-dark">
+            <tr>
+                <th style="width: 80px;">
+                    <a asp-action="Index" asp-route-sortOrder="" asp-route-page="1" class="text-white text-decoration-none">
+                        Mã @(string.IsNullOrEmpty(ViewBag.CurrentSort) ? "▲" : "")
+                    </a>
+                </th>
+                <th>
+                    <a asp-action="Index" asp-route-sortOrder="@ViewBag.NameSortParm" asp-route-page="1" class="text-white text-decoration-none">
+                        Tên sản phẩm
+                        @(ViewBag.CurrentSort == "name_desc" ? "▼" : (ViewBag.CurrentSort == "" ? "▲" : ""))
+                    </a>
+                </th>
+                <th style="width: 180px;">
+                    <a asp-action="Index" asp-route-sortOrder="@ViewBag.PriceSortParm" asp-route-page="1" class="text-white text-decoration-none">
+                        Giá
+                        @(ViewBag.CurrentSort == "price_asc" ? "▲" : (ViewBag.CurrentSort == "price_desc" ? "▼" : ""))
+                    </a>
+                </th>
+                <th>Mô tả</th>
+                <th style="width: 160px;">
+                    <a asp-action="Index" asp-route-sortOrder="@ViewBag.CategorySortParm" asp-route-page="1" class="text-white text-decoration-none">
+                        Danh mục
+                        @(ViewBag.CurrentSort == "cate_asc" ? "▲" : (ViewBag.CurrentSort == "cate_desc" ? "▼" : ""))
+                    </a>
+                </th>
+                <th class="text-center" style="width: 200px;">Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+    @if (Model != null && Model.Any())
+    {
+        @foreach (var item in Model) {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                <td><strong>@Html.DisplayFor(modelItem => item.Name)</strong></td>
+                <td class="text-success font-monospace">@Html.DisplayFor(modelItem => item.Price)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>
+                    <span class="badge bg-info text-dark">@Html.DisplayFor(modelItem => item.CategoryName)</span>
+                </td>
+                <td class="text-center">
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-warning">Sửa</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info">Chi tiết</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Xóa</a>
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+            <tr>
+                <td colspan="6" class="text-center text-muted">Chưa có sản phẩm nào.</td>
+            </tr>
+    }
+        </tbody>
+    </table>
+</div>
+
+@if (Model != null)
+{
+    <!-- Thanh điều hướng phân trang (Pagination) -->
+    <div class="d-flex justify-content-between align-items-center mt-3">
+        <div>
+            <span class="text-muted">
+                Trang <strong>@Model.PageIndex</strong> / <strong>@Model.TotalPages</strong>
+                (Tổng số: <strong>@Model.TotalItems</strong> sản phẩm)
+            </span>
+        </div>
+        <nav aria-label="Page navigation">
+            <ul class="pagination mb-0">
+                <li class="page-item @(!Model.HasPreviousPage ? "disabled" : "")">
+                    <a class="page-link" asp-action="Index"
+                       asp-route-sortOrder="@ViewBag.CurrentSort"
+                       asp-route-page="@(Model.PageIndex - 1)">« Trước</a>
+                </li>
+
+                @for (int i = 1; i <= Model.TotalPages; i++)
+                {
+                    <li class="page-item @(i == Model.PageIndex ? "active" : "")">
+                        <a class="page-link" asp-action="Index"
+                           asp-route-sortOrder="@ViewBag.CurrentSort"
+                           asp-route-page="@i">@i</a>
+                    </li>
+                }
+
+                <li class="page-item @(!Model.HasNextPage ? "disabled" : "")">
+                    <a class="page-link" asp-action="Index"
+                       asp-route-sortOrder="@ViewBag.CurrentSort"
+                       asp-route-page="@(Model.PageIndex + 1)">Sau »</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+}

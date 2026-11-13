@@ -1,0 +1,41 @@
+@model Day3_NguyenCongBang.Models.ProductViewModel
+
+@{
+    ViewData["Title"] = "Xóa sản phẩm";
+}
+
+<h1>Xóa sản phẩm</h1>
+
+<div class="alert alert-danger" role="alert">
+    <strong>Cảnh báo:</strong> Bạn có chắc chắn muốn xóa sản phẩm này không?
+</div>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Id)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Id)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Name)</dt>
+        <dd class="col-sm-9"><strong>@Html.DisplayFor(model => model.Name)</strong></dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Price)</dt>
+        <dd class="col-sm-9 text-success fw-bold">@Html.DisplayFor(model => model.Price)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Description)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Description)</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.CategoryName)</dt>
+        <dd class="col-sm-9">
+            <span class="badge bg-info text-dark">@Html.DisplayFor(model => model.CategoryName)</span>
+        </dd>
+    </dl>
+
+    <form asp-action="Delete" asp-route-id="@Model?.Id" method="post">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Xác nhận Xóa" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary ms-2">Hủy bỏ</a>
+    </form>
+</div>
+

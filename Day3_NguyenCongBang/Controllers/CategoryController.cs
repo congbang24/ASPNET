@@ -6,16 +6,25 @@ namespace Day3_NguyenCongBang.Controllers
 {
     public class CategoryController : Controller
     {
-        
+        private readonly ILogger<CategoryController> _logger;
+
+        public CategoryController(ILogger<CategoryController> logger)
+        {
+            _logger = logger;
+        }
+
+        // GET: CategoryController
         public ActionResult Index()
         {
-            var _cate = SeedData.categories; 
-            return View(_cate);              
+            var _categories = SeedData.categories; 
+            return View(_categories);              
         }
 
         // GET: CategoryController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details([FromRoute] int id)
         {
+            _logger.LogInformation("Details action called with id: {Id}", id);
+            _logger.LogError("This is a test error log for Details action with id: {Id}", id);
             //lay ra category co id truyen vao tu SeedData
             var category = SeedData.categories.FirstOrDefault(c => c.Id == id);
             //neu category==null thi tra ve trang loi
@@ -41,9 +50,7 @@ namespace Day3_NguyenCongBang.Controllers
         {
             if (ModelState.IsValid) 
             {
-                //
-                int maxId = SeedData.categories.Max(c => c.Id);
-                //
+                int maxId = SeedData.categories.Any() ? SeedData.categories.Max(c => c.Id) : 0;
                 category.Id = maxId + 1;
                 SeedData.categories.Add(category);
                 return RedirectToAction(nameof(Index));
@@ -104,7 +111,7 @@ namespace Day3_NguyenCongBang.Controllers
         // POST: CategoryController/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed([FromRoute] int id)
+        public ActionResult DeleteConfirmed(int id)
         {
             var existingCategory = SeedData.categories.FirstOrDefault(c => c.Id == id);
             if (existingCategory == null)
