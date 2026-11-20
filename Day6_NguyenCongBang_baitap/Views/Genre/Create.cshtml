@@ -1,0 +1,37 @@
+@model Day6_NguyenCongBang_baitap.Models.Genre
+
+@{
+    ViewData["Title"] = "Create Genre";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Thêm thể loại phim mới</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label fw-bold">Tên thể loại</label>
+                            <input asp-for="Name" class="form-control" placeholder="Ví dụ: Hành động, Viễn tưởng..." />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+                            <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+                            <button type="submit" class="btn btn-primary">Lưu</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

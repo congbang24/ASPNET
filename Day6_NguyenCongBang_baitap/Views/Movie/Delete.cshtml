@@ -1,0 +1,43 @@
+@model Day6_NguyenCongBang_baitap.Models.Movie
+
+@{
+    ViewData["Title"] = "Delete Movie";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-danger shadow-sm">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="mb-0">Xóa phim</h4>
+                </div>
+                <div class="card-body">
+                    <p class="text-danger fw-bold">Bạn có chắc chắn muốn xóa bộ phim này?</p>
+                    <dl class="row">
+                        <dt class="col-sm-4">Id</dt>
+                        <dd class="col-sm-8">@Model.Id</dd>
+
+                        <dt class="col-sm-4">Title</dt>
+                        <dd class="col-sm-8 fw-bold">@Model.Title</dd>
+
+                        <dt class="col-sm-4">Release Date</dt>
+                        <dd class="col-sm-8">@Model.ReleaseDate.ToString("dd/MM/yyyy")</dd>
+
+                        <dt class="col-sm-4">Duration</dt>
+                        <dd class="col-sm-8">@Model.Duration phút</dd>
+
+                        <dt class="col-sm-4">Genre</dt>
+                        <dd class="col-sm-8">@(Model.Genre != null ? Model.Genre.Name : "Chưa phân loại")</dd>
+                    </dl>
+                    <form asp-action="Delete" method="post" class="mt-4">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Index" class="btn btn-secondary">Hủy bỏ</a>
+                            <button type="submit" class="btn btn-danger">Xác nhận xóa</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

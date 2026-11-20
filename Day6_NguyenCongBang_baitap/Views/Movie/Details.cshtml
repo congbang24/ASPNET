@@ -1,0 +1,41 @@
+@model Day6_NguyenCongBang_baitap.Models.Movie
+
+@{
+    ViewData["Title"] = "Movie Details";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-header bg-info text-white">
+                    <h4 class="mb-0">Movie Details</h4>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-4">Id</dt>
+                        <dd class="col-sm-8">@Model.Id</dd>
+
+                        <dt class="col-sm-4">Title</dt>
+                        <dd class="col-sm-8 fw-bold">@Model.Title</dd>
+
+                        <dt class="col-sm-4">Release Date</dt>
+                        <dd class="col-sm-8">@Model.ReleaseDate.ToString("dd/MM/yyyy")</dd>
+
+                        <dt class="col-sm-4">Duration</dt>
+                        <dd class="col-sm-8">@Model.Duration phút</dd>
+
+                        <dt class="col-sm-4">Genre</dt>
+                        <dd class="col-sm-8">
+                            <span class="badge bg-primary">@(Model.Genre != null ? Model.Genre.Name : "Chưa phân loại")</span>
+                        </dd>
+                    </dl>
+                    <div class="d-flex justify-content-between mt-4">
+                        <a asp-action="Index" class="btn btn-secondary">Quay lại danh sách</a>
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
