@@ -48,3 +48,43 @@ Xây dựng ứng dụng ASP.NET Core MVC sử dụng **Entity Framework Core (C
 
 4. **Script SQL:**
    - File `database.sql` đính kèm sẵn trong thư mục dự án để chạy hoặc nộp bài trực tiếp.
+
+---
+
+## 📸 Hình ảnh yêu cầu & Kết quả thực tế
+
+### 1. Đề bài và giao diện yêu cầu trên bảng của cô giáo
+<img src="./photos/board_model.jpg" width="850" alt="Sơ đồ 2 thực thể Genre và Movie" />
+
+<br/><br/>
+
+<img src="./photos/board_ui.jpg" width="850" alt="Yêu cầu giao diện Movie.cshtml và Create/Edit.cshtml" />
+
+<br/><br/>
+
+### 2. Hình ảnh kết quả chạy thực tế và CSDL
+<img src="./photos/image.png" width="850" alt="Ảnh chụp thực tế 1" />
+
+<br/><br/>
+
+<img src="./photos/image copy.png" width="850" alt="Ảnh chụp thực tế 2" />
+
+<br/><br/>
+
+<img src="./photos/image copy 2.png" width="850" alt="Ảnh chụp thực tế 3" />
+
+<br/><br/>
+
+<img src="./photos/image copy 3.png" width="850" alt="Ảnh chụp thực tế 4" />
+
+<br/><br/>
+
+<img src="./photos/image copy 4.png" width="850" alt="Ảnh chụp thực tế 5" />
+
+<br/><br/>
+
+<img src="./photos/image copy 5.png" width="850" alt="Ảnh chụp thực tế 6" />
+
+<br/><br/>
+
+<img src="./photos/image copy 6.png" width="850" alt="Ảnh chụp thực tế 7" />
